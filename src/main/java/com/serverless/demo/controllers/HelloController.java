@@ -18,6 +18,11 @@ public class HelloController {
     @Value("${project.version}")
     private String appVer;
 
+    @GetMapping(value = "/")
+    private ResponseEntity<Object> defaultHealthCheck() {
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @GetMapping(value = "/welcome", produces = "application/json")
     private ResponseEntity<Object> welcome() {
         Map<String, String> respMap = new HashMap<>();
